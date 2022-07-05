@@ -5,12 +5,28 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './components/courses/register/register.component';
 import { ListComponent } from './components/courses/list/list.component';
 import { StoreModule } from '@ngrx/store';
+import { OfferingsComponent } from './components/offerings/offerings.component';
+import { UiLibModule } from '../ui-lib/ui-lib.module';
 
 
 const routes: Routes = [
   {
     path: 'courses',
-    component: CoursesComponent
+    component: CoursesComponent,
+    children: [
+      {
+        path: 'list',
+        component: ListComponent
+      },
+      {
+        path: ':course-id/offerings',
+        component: OfferingsComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'list'
+      }
+    ]
   }
 ]
 
@@ -19,12 +35,14 @@ const routes: Routes = [
   declarations: [
     CoursesComponent,
     RegisterComponent,
-    ListComponent
+    ListComponent,
+    OfferingsComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature("courses feature", {})
+    StoreModule.forFeature("courses feature", {}),
+    UiLibModule
   ],
   exports:[RouterModule]
 })

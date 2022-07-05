@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CoursesModule } from './courses/courses.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     //Routing module should go last. This will prevent issues with routes.
     AppRoutingModule,
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]

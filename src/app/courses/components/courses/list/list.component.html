@@ -1,34 +1,25 @@
+
 <ul>
-  <li class="card">
+  <li class="card" *ngFor="let course of model$ | async">
     <div class="card-header">
-      Angular State Management
+      {{course.title}}
     </div>
     <div class="card-body">
       <div>
-        This course teaches you how to build stateful application using Angular.
+        {{course.description}}
       </div>
       <div>
-        This is a 3 day course.
+        This is a {{course.numberOfDays}} day course
       </div>
     </div>
     <div class="card-footer">
-      <a class="btn btn-sm btn-success">See When This Course Is Offered</a>
+      <a [routerLink]="['..', course.id, 'offerings']" *ngIf="course.hasOfferings">
+        <app-link-button btnStyle="primary">See When This Course Is Offered</app-link-button>
+      </a>
+      <p *ngIf="!course.hasOfferings" class="alert alert-info">
+        No Offerings for this Course
+      </p>
     </div>
   </li>
-  <li class="card">
-    <div class="card-header">
-      Event Driven Services
-    </div>
-    <div class="card-body">
-      <div>
-        This course teaches you how to build stateful application using Angular.
-      </div>
-      <div>
-        This is a 3 day course.
-      </div>
-    </div>
-    <div class="card-footer">
-      <p class="alert alert-info">This course has no upcoming offerings</p>
-    </div>
-  </li>
+
 </ul>

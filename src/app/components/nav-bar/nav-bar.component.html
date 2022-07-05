@@ -1,4 +1,20 @@
 <nav>
-  <a class="btn btn-primary" routerLink="/courses">See Our Courses</a>
-  <a class="btn btn-primary" routerLink="/home">Go Home</a>
+  <ul class="nav nav-tabs container">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLinkActive]="['active']"
+        [routerLink]="['home']"
+        >Home</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        [routerLinkActive]="['active']"
+        [routerLink]="['courses']"
+        >Courses</a
+      >
+    </li>
+  </ul>
 </nav>
